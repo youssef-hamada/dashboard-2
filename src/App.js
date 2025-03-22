@@ -3,9 +3,28 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { FiSettings } from "react-icons/fi";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 import "./App.css";
+import { NavBar, Footer, Sidebar, ThemeSettings } from "./components/index";
+import {
+  Ecommerce,
+  Orders,
+  Calendar,
+  Area,
+  Bar,
+  ColorMapping,
+  Customers,
+  ColorPicker,
+  Editor,
+  Employees,
+  Financial,
+  Kanban,
+  Line,
+  Pie,
+  Pyramid,
+  Stacked,
+} from "./pages";
 
 function App() {
-  const [activeMenu, setActiveMenu] = useState(false);
+  const [activeMenu, setActiveMenu] = useState(true);
   return (
     <div className="App">
       <BrowserRouter>
@@ -23,10 +42,12 @@ function App() {
           </div>
           {activeMenu ? (
             <div className="w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white">
-              sidebar
+              <Sidebar />
             </div>
           ) : (
-            <div className="w-0 dark:bg-secondary-dark-bg">no sidebar</div>
+            <div className="w-0 dark:bg-secondary-dark-bg">
+              <Sidebar />
+            </div>
           )}
 
           <div
@@ -35,7 +56,7 @@ function App() {
             }`}
           >
             <div className="fixed md:static bg-main-bg dark:bg-main-dark navbar w-full ">
-              Navbar
+              <NavBar />
             </div>
           </div>
 
