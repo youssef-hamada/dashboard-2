@@ -22,9 +22,11 @@ import {
   Pyramid,
   Stacked,
 } from "./pages";
+import { useStateContext } from "./contexts/ContextProvider";
 
 function App() {
-  const [activeMenu, setActiveMenu] = useState(true);
+  const { activeMenu } = useStateContext();
+
   return (
     <div className="App">
       <BrowserRouter>
