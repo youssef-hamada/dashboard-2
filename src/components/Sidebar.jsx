@@ -8,9 +8,16 @@ import { links } from "../data/dummu";
 import { useStateContext } from "../contexts/ContextProvider";
 
 const Sidebar = () => {
-  const { activeMenu, setActiveMenu } = useStateContext();
+  const { activeMenu, setActiveMenu, screenSize } = useStateContext();
+
+  const handleCloseSideBar = () => {
+    if (activeMenu && screenSize <= 900) {
+      setActiveMenu(false);
+    }
+  };
+
   useEffect(() => {
-    setActiveMenu(true);
+    handleCloseSideBar();
   }, []);
 
   const activeLink =
@@ -47,7 +54,7 @@ const Sidebar = () => {
                 <NavLink
                   to={`/${ln.name}`}
                   key={ln.title}
-                  onClick={() => {}}
+                  onClick={() => handleCloseSideBar()}
                   className={({ isActive }) =>
                     isActive ? activeLink : normalLink
                   }

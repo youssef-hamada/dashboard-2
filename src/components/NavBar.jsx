@@ -1,4 +1,4 @@
-import React, { act } from "react";
+import React, { useEffect } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import { FiShoppingCart } from "react-icons/fi";
 import { BsChatLeft } from "react-icons/bs";
@@ -25,7 +25,33 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
 );
 
 const NavBar = () => {
-  const { activeMenu, setActiveMenu } = useStateContext();
+  const {
+    activeMenu,
+    setActiveMenu,
+    clicked,
+    setClicked,
+    handleClick,
+    screenSize,
+    setScreenSize,
+  } = useStateContext();
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenSize(window.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (screenSize <= 900) {
+      setActiveMenu(false);
+    } else {
+      setActiveMenu(true);
+    }
+  }, [screenSize]);
 
   return (
     <div className="flex justify-between md:mx-6 relative">
@@ -39,21 +65,21 @@ const NavBar = () => {
       <div className="flex">
         <NavButton
           title={"cart"}
-          customFunc={() => {}}
+          customFunc={() => handleClick("cart")}
           color="blue"
           icon={<FiShoppingCart />}
         />
         <NavButton
           title={"chat"}
           dotColor={"#03c9D7"}
-          customFunc={() => {}}
+          customFunc={() => handleClick("chat")}
           color="blue"
           icon={<BsChatLeft />}
         />
         <NavButton
           title={"notifications"}
           dotColor={"#03c9D7"}
-          customFunc={() => {}}
+          customFunc={() => handleClick("notification")}
           color="blue"
           icon={<RiNotification3Line />}
         />
@@ -61,7 +87,7 @@ const NavBar = () => {
         <TooltipComponent content={"Profile"} position="BottomCenter">
           <div
             className="flex items-center gap-2 rounded-lg p-3 hover:bg-light-gray"
-            onClick={() => {}}
+            onClick={() => handleClick("userProfile")}
           >
             <img
               src={avatar}
@@ -75,6 +101,11 @@ const NavBar = () => {
             <MdKeyboardArrowDown className="text-gray-400 text-14" />
           </div>
         </TooltipComponent>
+
+        {clicked.cart && <Cart />}
+        {clicked.chat && <Chat />}
+        {clicked.notification && <Notification />}
+        {clicked.userProfile && <UserProfile />}
       </div>
     </div>
   );
