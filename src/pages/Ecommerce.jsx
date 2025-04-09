@@ -83,7 +83,7 @@ const Ecommerce = () => {
           <div className="flex gap-10 flex-wrap justify-center mt-10">
             <div className="border-r-1 border-color m-4 pr-10 ">
               <div>
-                <p className="flex justify-center items-center">
+                <p className="flex justify-start items-center">
                   <span className="text-3xl font-semibold">$63,448</span>
                   <span className="p-1.5 hover:drop-shadow-xl cursor-pointer rounded-full text-white bg-green-400 ml-3 text-xs">
                     23%
@@ -103,8 +103,28 @@ const Ecommerce = () => {
               </div>
 
               <div className="mt-8">
-                <SparkLine />
+                <SparkLine
+                  currentColor={"blue"}
+                  id={"line-sparkline"}
+                  type={"Line"}
+                  height={"80px"}
+                  width={"250px"}
+                  data={SparklineAreaData}
+                  color={"blue"}
+                />
               </div>
+              <div className="mt-10">
+                <Button
+                  color={"white"}
+                  size="md"
+                  bgColor="blue"
+                  text="Download"
+                  borderRadius="10px"
+                ></Button>
+              </div>
+            </div>
+            <div>
+              <Stacked width="320px" height="360px" />
             </div>
           </div>
         </div>
