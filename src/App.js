@@ -51,7 +51,6 @@ function App() {
               <Sidebar />
             </div>
           )}
-
           <div
             className={`dark:bg-main-dark bg-main-bg min-h-screen w-full ${
               activeMenu ? " md:ml-72 " : " flex-2"
@@ -67,8 +66,8 @@ function App() {
 
                   {/* pages */}
                   <Route path="/orders" element={<Orders />} />
-                  <Route path="/employees" element={<div>employees</div>} />
-                  <Route path="/customers" element={<div>customers</div>} />
+                  <Route path="/employees" element={<Employees />} />
+                  <Route path="/customers" element={<Customers />} />
 
                   {/* Apps */}
                   <Route path="/kanban" element={<div>kanban</div>} />
