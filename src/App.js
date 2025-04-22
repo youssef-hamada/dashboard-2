@@ -70,7 +70,7 @@ function App() {
                   <Route path="/customers" element={<Customers />} />
 
                   {/* Apps */}
-                  <Route path="/kanban" element={<div>kanban</div>} />
+                  <Route path="/kanban" element={<Kanban />} />
                   <Route path="/editor" element={<div>editor</div>} />
                   <Route path="/calendar" element={<Calendar />} />
                   <Route
