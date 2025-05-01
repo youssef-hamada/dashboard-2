@@ -59,6 +59,7 @@ function App() {
             <div className="fixed md:static bg-main-bg dark:bg-main-dark navbar w-full ">
               <NavBar />
               <div>
+                <ThemeSettings />
                 <Routes>
                   {/* dashboard */}
                   <Route path="/" element={<div>Home</div>} />
