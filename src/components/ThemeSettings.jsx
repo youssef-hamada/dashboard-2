@@ -7,6 +7,15 @@ import { themeColors } from "../data/dummu";
 import { useStateContext } from "../contexts/ContextProvider";
 
 const ThemeSettings = () => {
+  const {
+    setColor,
+    setMode,
+    currentMode,
+    currentColor,
+    setThemeSettings,
+    themeSettings,
+  } = useStateContext();
+
   return (
     <div className="bg-half-transparent w-screen fixed nav-item top-0 right-0">
       <div className="float-right h-screen dark:bg-main-dark-bg bg-white w-400">
@@ -17,7 +26,7 @@ const ThemeSettings = () => {
             type="button"
             className="text-2xl p-3 hover:drop-shadow-xl hover:bg-light-gray text-white"
             style={{ borderRadius: "50%", background: "lightgray" }}
-            onClick={() => {}}
+            onClick={() => setThemeSettings(false)}
           >
             <MdOutlineCancel />
           </button>
