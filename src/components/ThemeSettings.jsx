@@ -42,8 +42,8 @@ const ThemeSettings = () => {
             name="theme"
             value={"Light"}
             className="cursor-pointer mx-6"
-            onChange={() => {}}
-            checked={true}
+            onChange={setMode}
+            checked={currentMode === "Light"}
           />
           <label htmlFor="Light" className=" cursor-pointer">
             Light Theme
@@ -56,8 +56,8 @@ const ThemeSettings = () => {
             name="theme"
             value={"Dark"}
             className="cursor-pointer mx-6"
-            onChange={() => {}}
-            checked={true}
+            onChange={setMode}
+            checked={currentMode === "Dark"}
           />
           <label htmlFor="dark" className=" cursor-pointer">
             Dark Theme
@@ -78,11 +78,14 @@ const ThemeSettings = () => {
                   type="button"
                   className="h-10 w-10 rounded-full cursor-pointer"
                   style={{ backgroundColor: item.color }}
-                  onClick={() => {}}
+                  onClick={() => {
+                    console.log(item.color);
+                    setColor(item.color);
+                  }}
                 >
                   <BsCheck
                     className={`ml-2 text-2xl text-white ${
-                      item.color === "#03C9D7" ? "block" : "hidden"
+                      item.color === currentColor ? "block" : "hidden"
                     }`}
                   />
                 </button>
